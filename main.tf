@@ -123,6 +123,6 @@ resource "azurerm_lb_rule" "azlb" {
   backend_address_pool_ids       = [azurerm_lb_backend_address_pool.azlb.id]
   disable_outbound_snat          = var.disable_outbound_snat
   enable_floating_ip             = var.lb_floating_ip_enabled
-  idle_timeout_in_minutes        = 5
+  idle_timeout_in_minutes        = var.azurerm_lb_rule_idle_timeout_in_minutes
   probe_id                       = element(azurerm_lb_probe.azlb[*].id, count.index)
 }
