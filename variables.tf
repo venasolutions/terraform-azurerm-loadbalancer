@@ -147,6 +147,12 @@ variable "pip_idle_timeout_in_minutes" {
   description = "(Optional) Specifies the timeout for the TCP idle connection. The value can be set between 4 and 30 minutes. Defaults to `4`."
 }
 
+variable "azurerm_lb_rule_idle_timeout_in_minutes" {
+  type        = number
+  default     = 10
+  description = "(Optional) Specifies the timeout for the TCP idle connection. The value can be set between 4 and 30 minutes. Defaults to `4`."
+}
+
 variable "pip_ip_tags" {
   type        = map(string)
   default     = null
