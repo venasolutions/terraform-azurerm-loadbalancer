@@ -93,6 +93,12 @@ variable "lb_probe_interval" {
   description = "Interval in seconds the load balancer health probe rule does a check"
 }
 
+variable "lb_probe_threshold" {
+  type        = number
+  default     = 1
+  description = "The number of consecutive successful or failed probes that allow or deny traffic to this endpoint. Possible values range from 1 to 100. The default value is 1."
+}
+
 variable "lb_probe_unhealthy_threshold" {
   type        = number
   default     = 2

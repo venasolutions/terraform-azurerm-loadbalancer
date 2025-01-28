@@ -109,6 +109,7 @@ resource "azurerm_lb_probe" "azlb" {
   number_of_probes    = var.lb_probe_unhealthy_threshold
   protocol            = element(var.lb_probe[element(keys(var.lb_probe), count.index)], 0)
   request_path        = element(var.lb_probe[element(keys(var.lb_probe), count.index)], 2)
+  probe_threshold     = var.lb_probe_threshold
 }
 
 resource "azurerm_lb_rule" "azlb" {
