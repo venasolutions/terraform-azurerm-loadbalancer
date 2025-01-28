@@ -109,6 +109,7 @@ resource "azurerm_lb_probe" "azlb" {
   number_of_probes    = var.lb_probe_unhealthy_threshold
   protocol            = element(var.lb_probe[element(keys(var.lb_probe), count.index)], 0)
   request_path        = element(var.lb_probe[element(keys(var.lb_probe), count.index)], 2)
+  probe_threshold     = var.lb_probe_threshold
 }
 
 resource "azurerm_lb_rule" "azlb" {
@@ -123,6 +124,6 @@ resource "azurerm_lb_rule" "azlb" {
   backend_address_pool_ids       = [azurerm_lb_backend_address_pool.azlb.id]
   disable_outbound_snat          = var.disable_outbound_snat
   enable_floating_ip             = var.lb_floating_ip_enabled
-  idle_timeout_in_minutes        = var.azurerm_lb_rule_idle_timeout_in_minutes
+  idle_timeout_in_minutes        = var.lb_rule_idle_timeout_in_minutes
   probe_id                       = element(azurerm_lb_probe.azlb[*].id, count.index)
 }

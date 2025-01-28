@@ -93,6 +93,12 @@ variable "lb_probe_interval" {
   description = "Interval in seconds the load balancer health probe rule does a check"
 }
 
+variable "lb_probe_threshold" {
+  type        = number
+  default     = 1
+  description = "The number of consecutive successful or failed probes that allow or deny traffic to this endpoint. Possible values range from 1 to 100. The default value is 1."
+}
+
 variable "lb_probe_unhealthy_threshold" {
   type        = number
   default     = 2
@@ -147,7 +153,7 @@ variable "pip_idle_timeout_in_minutes" {
   description = "(Optional) Specifies the timeout for the TCP idle connection. The value can be set between 4 and 30 minutes. Defaults to `4`."
 }
 
-variable "azurerm_lb_rule_idle_timeout_in_minutes" {
+variable "lb_rule_idle_timeout_in_minutes" {
   type        = number
   default     = 10
   description = "(Optional) Specifies the timeout for the TCP idle connection. The value can be set between 4 and 30 minutes. Defaults to `4`."
